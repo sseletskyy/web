@@ -1,0 +1,5 @@
+{
+  "graphQLPath": "/graphql",
+  "authPath": "/auth",
+  "port": 8888
+}

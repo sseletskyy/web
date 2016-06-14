@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "babel src -d lib",
+    "clean": "rm -rf node_modules",
+    "postinstall": "npm run build",
+    "start": "node lib",
+    "start-dev": "nodemon dev.js"
+  },
+  "dependencies": {
+    "auth0": "^2.1.0",
+    "body-parser": "^1.15.0"
+  }
+}

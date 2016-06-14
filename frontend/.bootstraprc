@@ -1,0 +1,18 @@
+---
+bootstrapVersion: 4
+
+useFlexbox: true
+
+styleLoaders:
+  - style
+  - css
+  - postcss
+  - sass
+
+extractStyles: true
+
+preBootstrapCustomizations: ./src/styles/bootstrap/bootstrap.scss
+
+styles: true
+
+scripts: false

@@ -1,0 +1,11 @@
+{
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules",
+    "schema.graphql",
+    "schema.json"
+  ],
+  "verbose": true,
+  "events": {
+  }
+}

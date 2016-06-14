@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "dependencies": {
+    "auth0": "^2.1.0",
+    "dataloader": "^1.2.0",
+    "embedly": "^2.0.1",
+    "express-graphql": "^0.5.3",
+    "graphql": "^0.6.0",
+    "graphql-relay": "^0.4.1",
+    "pg": "^4.5.5",
+    "pg-hstore": "^2.3.2",
+    "request": "^2.72.0",
+    "request-promise": "^3.0.0",
+    "sequelize": "^3.23.2",
+    "sequelize-hierarchy": "^0.5.8"
+  },
+  "scripts": {
+    "build": "babel src -d lib",
+    "clean": "rm -rf node_modules",
+    "postinstall": "npm run build && npm run update-schema",
+    "start": "node lib",
+    "start-dev": "nodemon dev.js",
+    "update-schema": "node scripts/updateSchema.js",
+    "update-sequelize": "node scripts/updateSequelize.js"
+  },
+  "devDependencies": {
+    "sleep": "^3.0.1"
+  }
+}

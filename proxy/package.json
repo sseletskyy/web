@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "dependencies": {
+    "compression": "^1.6.1",
+    "http-proxy": "^1.13.2"
+  },
+  "scripts": {
+    "build": "babel src -d lib",
+    "clean": "rm -rf node_modules",
+    "postinstall": "npm run build",
+    "start": "node lib"
+  }
+}

@@ -1,0 +1,33 @@
+.root {
+  position: fixed;
+  right: 15px;
+  bottom: 0;
+  left: 15px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  padding: 6px 24px;
+  margin: 0 auto;
+  min-height: 50px;
+  color: #fff;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.870588);
+  transition: all .35s cubic-bezier(.4,0,.2,1) .35s;
+  @include media-breakpoint-down(xs) {
+    right: 0px;
+    left: 0px;
+    border-radius: 0px;
+  }
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.label {
+  flex-grow: 1;
+}
+
+.button {
+  margin-left: 10px;
+}
