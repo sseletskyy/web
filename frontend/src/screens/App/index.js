@@ -2,13 +2,11 @@ import React from 'react';
 
 import { canUseDOM } from 'exenv';
 
-import GlobalProgress from './components/GlobalProgress/GlobalProgress';
-import GlobalSnackbar from './components/GlobalSnackbar/GlobalSnackbar';
-import Modal from './components/Modal/Modal';
+import GlobalProgress from './components/GlobalProgress';
+import GlobalSnackbar from './components/GlobalSnackbar';
+import Modal from './components/Modal';
 
 import get from 'lodash/get';
-
-import styles from './App.scss';
 
 class App extends React.Component {
   static propTypes = {
@@ -59,7 +57,7 @@ class App extends React.Component {
             {this.cloneChildren(this.props.children, { modal: !!isModal })}
           </Modal>
         )}
-        <GlobalSnackbar />
+        {/*<GlobalSnackbar />*/}
       </div>
     );
   }

@@ -1,13 +1,12 @@
 import React from 'react';
+import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux';
 
 import ProgressBar from 'shared/components/ProgressBar';
 
-import styles from './GlobalProgress.scss';
-
 const GlobalProgress = ({ progress, ...props }) => (
-  <div className={styles.progress} {...props}>
-    <ProgressBar autoIncrement percent={progress.value} />
+  <div className={css(styles.progress)} {...props}>
+    hello world
   </div>
 );
 
@@ -20,3 +19,12 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(GlobalProgress);
+
+const styles = StyleSheet.create({
+  progress: {
+    width: '100%',
+    position: 'fixed',
+    top: 0,
+    zIndex: 999,
+  },
+});

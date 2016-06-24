@@ -1,10 +1,5 @@
 import React from 'react';
-
-import classNames from 'classnames';
-
-import Button from '../Button';
-
-import styles from './Snackbar.scss';
+import { StyleSheet, css } from 'aphrodite';
 
 export default class Snackbar extends React.Component {
   static propTypes = {
@@ -54,14 +49,46 @@ export default class Snackbar extends React.Component {
         {icon && <div className={styles.icon}>{icon}</div>}
         <span className={styles.label}>{label}</span>
         {action &&
-          <Button
-            action={type}
+          <button
             className={styles.button}
             onClick={onClick}
           >
             {action}
-          </Button>}
+          </button>}
       </div>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  root: {
+    position: 'fixed',
+    right: '15px',
+    bottom: 0,
+    left: '15px',
+    zIndex: 999,
+    display: 'flex',
+    alignItems: 'center',
+    padding: '6px 24px',
+    margin: '0 auto',
+    minHeight: '50px',
+    color: '#fff',
+    borderRadius: '2px',
+    background: 'rgba(0, 0, 0, 0.870588)',
+    transition: 'all .35s cubic-bezier(.4,0,.2,1) .35s',
+    '@media (max-width: 400px)': {
+      right: 0,
+      left: 0,
+      borderRadius: '0px',
+    },
+  },
+  icon: {
+    marginRight: '10px',
+  },
+  label: {
+    flexGrow: 1,
+  },
+  button: {
+    marginLeft: '10px',
+  },
+});

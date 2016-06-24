@@ -20,15 +20,6 @@ module.exports = {
         test: /\.json$/,
         loader: 'json',
       },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'css/locals?modules&importLoaders=1&localIdentName=[local]-[hash:base64]',
-          'postcss',
-          'sass',
-          'sass-resources',
-        ],
-      },
     ],
   },
   output: {
@@ -40,16 +31,11 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({ 'process.env.APP_URL': JSON.stringify(process.env.APP_URL) }),
   ],
-  postcss: () => [
-    require('postcss-nested'),
-  ],
-  sassResources: './styles/bootstrap/sass-resources.scss',
   resolve: {
     alias: {
       'shared/actions': 'actions',
       'shared/components': 'components',
       'shared/mutations': 'mutations',
-      'shared/styles': 'styles',
       'shared/utils': 'utils',
     },
     modulesDirectories: ['shared', 'node_modules'],
