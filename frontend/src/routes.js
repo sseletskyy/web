@@ -6,9 +6,8 @@ import { createRoutes, IndexRoute, IndexRedirect, Route } from 'react-router';
 import { canUseDOM } from 'exenv';
 
 import App from './screens/App';
-import Navigator from './screens/App/screens/Navigator/Navigator';
 
-import Home from './screens/App/screens/Navigator/screens/Home/Home';
+import Home from './screens/App/screens/Home/Home';
 
 import { viewerQuery } from './queries';
 
@@ -57,13 +56,7 @@ export default (store) => {
   // routes
   return createRoutes(
     <Route path="/" component={App} onEnter={refreshToken}>
-      <Route
-        component={Navigator}
-        queries={viewerQuery}
-        prepareParams={prepareParamsWithUser()}
-      >
-        <IndexRoute component={Home} />
-      </Route>
+      <IndexRoute component={Home} queries={viewerQuery} />
     </Route>
   );
 };

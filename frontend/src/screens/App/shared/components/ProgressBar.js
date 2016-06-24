@@ -1,7 +1,5 @@
 import React from 'react';
-
-import styles from './ProgressBar.scss';
-import classNames from 'classnames';
+import { StyleSheet, css } from 'aphrodite';
 
 export default class ProgressBar extends React.Component {
   static propTypes = {
@@ -67,15 +65,36 @@ export default class ProgressBar extends React.Component {
   };
   render() {
     const { percent } = this.state;
-    let classes = classNames({
-      [styles.progressbar]: true,
-      [styles.progressbarHide]: percent < 0 || percent >= 100,
-    });
     let style = { width: `${(percent < 0 ? 0 : percent)}%` };
+    const hideProgress = percent < 0 || percent >= 100;
     return (
-      <div className={classes}>
-        <div className={styles.progressbarPercent} style={style} />
+      <div className={css(styles.progressbar, hideProgress && styles.progressbarHide)}>
+        <div className={css(styles.progressbarPercent)} style={style} />
       </div>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  progressbar: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    visibility: 'visible',
+    opacity: 1,
+    transition: 'all 400ms',
+    zIndex: 9999,
+  },
+  progressbarHide: {
+    opacity: 0,
+    visibility: 'hidden',
+    zIndex: -10,
+  },
+  progressbarPercent: {
+    height: '2px',
+    background: '#29D',
+    boxShadow: '0 0 10px #29D, 0 0 5px #29D',
+    transition: 'all 200ms ease',
+  },
+});

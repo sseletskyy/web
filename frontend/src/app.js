@@ -5,14 +5,14 @@ import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
 import { match, Router, browserHistory, applyRouterMiddleware } from 'react-router';
 
+import { StyleSheet } from 'aphrodite';
+
 // import { useHistoryRestoreScroll, useRouterRestoreScroll } from 'react-router-restore-scroll';
 
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 
 import config from '../config.json';
-
-import './styles/app.scss';
 
 const environment = new Relay.Environment();
 
@@ -25,6 +25,9 @@ environment.injectNetworkLayer(new Relay.DefaultNetworkLayer(graphQLAddress, {
 
 const data = JSON.parse(document.getElementById('preloadedData').textContent);
 const initialState = JSON.parse(document.getElementById('reduxData').textContent);
+
+const styles = JSON.parse(document.getElementById('stylesData').textContent);
+StyleSheet.rehydrate(styles);
 
 IsomorphicRelay.injectPreparedData(environment, data);
 

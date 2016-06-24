@@ -4,6 +4,7 @@ import ReactDOMServer from 'react-dom/server';
 import Relay from 'react-relay';
 import { match } from 'react-router';
 import IsomorphicRouter from 'isomorphic-relay-router';
+import { StyleSheetServer } from 'aphrodite';
 
 import { Provider } from 'react-redux';
 import configureStore from '../../store/configureStore';
@@ -46,19 +47,26 @@ export default (req, res, next) => {
       cssUri = null;
       jsUri = '/assets/app.js';
     }
-    const markup = ReactDOMServer.renderToString(
-      <Provider store={store}>
-        {IsomorphicRouter.render(props)}
-      </Provider>
-    );
-
+    const { html, css } = StyleSheetServer.renderStatic(() => {
+      return ReactDOMServer.renderToString(
+        <Provider store={store}>
+          {IsomorphicRouter.render(props)}
+        </Provider>
+      );
+    });
+    // const markup = ReactDOMServer.renderToString(
+    //   <Provider store={store}>
+    //     {IsomorphicRouter.render(props)}
+    //   </Provider>
+    // );
     res.send(`<!DOCTYPE html>\n${ReactDOMServer.renderToStaticMarkup(
       <Page
         cssUri={cssUri}
         data={data}
         initialState={finalState}
         jsUri={jsUri}
-        markup={markup}
+        markup={html}
+        css={css}
       />
     )}`);
   }

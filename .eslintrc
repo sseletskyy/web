@@ -5,6 +5,7 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "rules": {
+    "no-use-before-define": 0,
     "react/prefer-stateless-function": 1
   },
   "settings": {
