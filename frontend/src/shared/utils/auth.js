@@ -4,9 +4,8 @@ import cookie from 'js-cookie';
 
 import config from './config';
 
-const clientId = 'Tn2SYv7j2qfu2HlRmTpYx8ZQUHEYHQhs';
-const domain = 'icon.auth0.com';
-
+const clientId = process.env.AUTH0_CLIENT_ID;
+const domain = `${process.env.AUTH0_DOMAIN}.auth0.com`;
 const authAddress = `${process.env.APP_URL}${config.authPath}`;
 
 const refresh = () => {
